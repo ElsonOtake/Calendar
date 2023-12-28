@@ -1,4 +1,9 @@
 <p style="color: green"><%= notice %></p>
+
+<% SimpleCalendar::Calendar.new(self).render do |day| %>
+  <%= day %>
+<% end %>
+<hr />
 <% start_date = params.fetch(:start_date, Date.today).to_date %>
 
 <%# Agenda calendar %>
