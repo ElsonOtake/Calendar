@@ -2,10 +2,11 @@ require 'rails'
 
 module SimpleCalendar
   class Calendar
-    attr_accessor :view_context
+    attr_accessor :view_context, :options
 
     def initialize(view_context, opts={})
       @view_context = view_context
+      @options = opts
     end
 
     def render(&block)
@@ -25,7 +26,11 @@ module SimpleCalendar
     end
 
     def date_range
-      (start_date..(start_date + 3.days)).to_a
+      (start_date..(start_date + additional_days.days)).to_a
+    end
+
+    def additional_days
+      options.fetch(:number_of_days, 4) - 1
     end
   end
 end
