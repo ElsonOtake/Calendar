@@ -9,7 +9,23 @@ module SimpleCalendar
     end
 
     def render(&block)
-      view_context.render partial: "calendar", locals: {}
+      view_context.render(
+        partial: "calendar",
+        locals: {
+          date_range: date_range,
+          start_date: start_date
+        }
+      )
+    end
+
+    private
+
+    def start_date
+      view_context.params.fetch(:start_date, Date.today).to_date
+    end
+
+    def date_range
+      (start_date..(start_date + 3.days)).to_a
     end
   end
 end
