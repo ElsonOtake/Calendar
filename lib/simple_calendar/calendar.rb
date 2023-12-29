@@ -11,7 +11,7 @@ module SimpleCalendar
 
     def render(&block)
       view_context.render(
-        partial: "simple_calendar/calendar",
+        partial: self.class.name.underscore,
         locals: {
           date_range: date_range,
           start_date: start_date
