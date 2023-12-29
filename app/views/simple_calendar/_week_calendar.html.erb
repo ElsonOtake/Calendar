@@ -14,10 +14,12 @@ Week <%= start_date.strftime("%U").to_i %>
     <% date_range.each_slice(7) do |week| %>
       <tr>
         <% week.each do |day| %>
-          <td><%= day %></td>
-          <% @meetings.select { |m| m.start_time.to_date == day }.sort_by(&:start_time).each do |meeting| %>
-            <div><%= link_to meeting.name, meeting %></div>
-          <% end %>
+          <td>
+            <%= day %>
+            <% events.select { |m| m.start_time.to_date == day }.sort_by(&:start_time).each do |meeting| %>
+              <div><%= link_to meeting.name, meeting %></div>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>

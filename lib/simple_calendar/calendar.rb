@@ -14,7 +14,8 @@ module SimpleCalendar
         partial: self.class.name.underscore,
         locals: {
           date_range: date_range,
-          start_date: start_date
+          start_date: start_date,
+          events: options.fetch(:events, [])
         }
       )
     end
