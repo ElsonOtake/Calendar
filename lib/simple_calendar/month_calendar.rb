@@ -1,7 +1,5 @@
-require 'rails'
-
 module SimpleCalendar
-  class MonthCalendar < Calendar
+  class MonthCalendar < SimpleCalendar::Calendar
 
     private
 

@@ -1,7 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
 <%#= SimpleCalendar::Calendar.new(self, number_of_days: 14).render do |day| %>
-<%= SimpleCalendar::MonthCalendar.new(self).render do |day| %>
+<%#= SimpleCalendar::MonthCalendar.new(self).render do |day| %>
+<%= SimpleCalendar::WeekCalendar.new(self).render do |day| %>
   <%= day %>
 <% end %>
 <hr />
