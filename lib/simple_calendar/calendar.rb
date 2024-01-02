@@ -34,7 +34,6 @@ module SimpleCalendar
         date = event.start_time.to_date
         sorted[date] ||= []
         sorted[date] << event
-        sorted[date] = sorted[date].sort_by(&:start_time)
       end
 
       sorted
