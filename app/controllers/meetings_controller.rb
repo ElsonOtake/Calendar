@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
 
   # GET /meetings or /meetings.json
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.order(:start_time)
   end
 
   # GET /meetings/1 or /meetings/1.json

@@ -11,16 +11,33 @@ module SimpleCalendar
 
     def render(&block)
       view_context.render(
-        partial: self.class.name.underscore,
+        partial: partial_name,
         locals: {
           date_range: date_range,
           start_date: start_date,
-          events: options.fetch(:events, [])
+          sorted_events: sorted_events
         }
       )
     end
 
     private
+
+    def partial_name
+      self.class.name.underscore
+    end
+
+    def sorted_events
+      events = options.fetch(:events, [])
+      sorted = {}
+
+      events.each do |event|
+        date = event.start_time.to_date
+        sorted[date] ||= []
+        sorted[date] << event
+      end
+
+      sorted
+    end
 
     def start_date
       view_context.params.fetch(:start_date, Date.today).to_date

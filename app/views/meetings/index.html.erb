@@ -1,63 +1,16 @@
 <h1>Calendar</h1>
 <p style="color: green"><%= notice %></p>
 
+<%# Agenda calendar %>
 <%#= SimpleCalendar::Calendar.new(self, number_of_days: 14).render do |day| %>
+
+<%# Monthly calendar %>
 <%= SimpleCalendar::MonthCalendar.new(self, events: @meetings).render do |day| %>
 <%#= SimpleCalendar::MonthCalendar.new(self).render do |day| %>
+
+<%# Weekly calendar %>
 <%#= SimpleCalendar::WeekCalendar.new(self).render do |day| %>
   <%= day %>
 <% end %>
-<hr />
-<%# start_date = params.fetch(:start_date, Date.today).to_date %>
 
-<%# Agenda calendar %>
-<%# date_range = (start_date..start_date + 3.days).to_a %>
-
-<%# Weekly calendar %>
-<%# date_range = (start_date.beginning_of_week..start_date.end_of_week).to_a %>
-
-<%# Monthly calendar %>
-<%# date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
-
-<%#= link_to "Previous", start_date: date_range.first - 1.day %>
-<%#= I18n.t('date.month_names')[start_date.month] %> <%#=  start_date.year %>
-<%#= link_to "Next", start_date: date_range.last + 1.day %>
-<%# <table class="table table-striped"> %>
-  <%# <thead> %>
-    <%# <tr> %>
-      <%# date_range.slice(0, 7).each do |day| %>
-        <%# <th> %>
-          <%#= I18n.t('date.abbr_day_names')[day.wday] %>
-        <%# </th> %>
-      <%# end %>
-    <%# </tr> %>
-  <%# </thead> %>
-  <%# <tbody> %>
-    <%# date_range.each_slice(7) do |week| %>
-      <%# <tr> %>
-        <%# week.each do |day| %>
-          <%# <td> %>
-            <%#= day %>
-          <%# </td> %>
-          <%# @meetings.select { |m| m.start_time.to_date == day }.sort_by(&:start_time).each do |meeting| %>
-            <%# <div> %>
-              <%#= link_to meeting.name, meeting %>
-            <%# </div> %>
-          <%# end %>
-        <%# end %>
-      <%# </tr> %>
-    <%# end %>
-  <%# </tbody> %>
-<%# </table> %>
-<%# <h1>Meetings</h1> %>
-
-<%# <div id="meetings"> %>
-  <%# @meetings.each do |meeting| %>
-    <%#= render meeting %>
-    <%# <p> %>
-      <%#= link_to "Show this meeting", meeting %>
-    <%# </p> %>
-  <%# end %>
-<%# </div> %>
-
-<%#= link_to "New meeting", new_meeting_path %>
+<%= link_to "New meeting", new_meeting_path %>
